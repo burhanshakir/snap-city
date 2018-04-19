@@ -1,0 +1,6 @@
+framework module Pods_snap_city {
+  umbrella header "Pods-snap-city-umbrella.h"
+
+  export *
+  module * { export * }
+}
