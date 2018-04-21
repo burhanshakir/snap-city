@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapVC: UIViewController {
+class MapVC: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -25,6 +25,7 @@ class MapVC: UIViewController {
         
         locationManager.delegate = self
         configureLocationServices()
+        addDoubleTap()
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +38,15 @@ class MapVC: UIViewController {
             centerMapOnUserLocation()
         }
     }
+    
+    func addDoubleTap(){
+        
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(dropPin(sender:)))
+        
+        doubleTap.numberOfTapsRequired = 2
+        doubleTap.delegate = self
+        mapView.addGestureRecognizer(doubleTap)
+    }
 
 }
 
@@ -47,6 +57,28 @@ extension MapVC : MKMapViewDelegate{
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate, regionRadius, regionRadius)
         
         mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    @objc func dropPin(sender : UITapGestureRecognizer){
+        
+        removePin()
+        
+        let touchPoint = sender.location(in: mapView)
+        let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+        
+        let annotation = DroppablePin(coordinate: touchCoordinate, identifier: "pin")
+        mapView.addAnnotation(annotation)
+        
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(touchCoordinate, regionRadius, regionRadius)
+        
+        mapView.setRegion(coordinateRegion, animated: true)
+     
+    }
+    
+    func removePin(){
+        for annotation in mapView.annotations{
+            mapView.removeAnnotation(annotation)
+        }
     }
     
 }
