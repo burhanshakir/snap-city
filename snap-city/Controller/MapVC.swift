@@ -63,7 +63,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        collectionView?.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         pullUpView.addSubview(collectionView!)
         
@@ -87,7 +87,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func animateViewUp(){
-        pullUpViewHeightConstraint.constant = 250
+        pullUpViewHeightConstraint.constant = 300
         
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
@@ -158,7 +158,7 @@ extension MapVC : MKMapViewDelegate{
     
     func centerMapOnUserLocation(){
         guard let coordinate = locationManager.location?.coordinate else { return }
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate, regionRadius, regionRadius)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(coordinate, regionRadius * 2, regionRadius * 2)
         
         mapView.setRegion(coordinateRegion, animated: true)
     }
@@ -169,6 +169,11 @@ extension MapVC : MKMapViewDelegate{
         removeSpinner()
         removeProgressLbl()
         cancelSessions()
+        
+        imageArray = []
+        imageURLArray = []
+        
+        self.collectionView?.reloadData()
         
         animateViewUp()
         addSwipe()
@@ -192,6 +197,8 @@ extension MapVC : MKMapViewDelegate{
                         self.removeSpinner()
                         self.removeProgressLbl()
                         
+                        self.collectionView?.reloadData()
+                        
                         
                     }
                 })
@@ -208,7 +215,6 @@ extension MapVC : MKMapViewDelegate{
     
     func retrieveImagesURL(forAnnotation annotation: DroppablePin, handler:@escaping (_ status : Bool) -> ()){
         
-        imageURLArray = []
         
         Alamofire.request(flickrUrl(forApiKey: api_key, withAnnotation: annotation, andNumberOfPhotos: 40)).responseJSON { (response) in
             
@@ -231,8 +237,6 @@ extension MapVC : MKMapViewDelegate{
     }
     
     func retrieveImage(handler:@escaping (_ status : Bool) -> ()){
-        
-        imageArray = []
         
         for url in imageURLArray{
             Alamofire.request(url).responseImage(completionHandler: { (response) in
@@ -288,12 +292,16 @@ extension MapVC : UICollectionViewDelegate, UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return self.imageArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell else {return UICollectionViewCell()}
+        
+        let image = UIImageView(image: imageArray[indexPath.row])
+        cell.addSubview(image)
+        
         return cell
     }
     
