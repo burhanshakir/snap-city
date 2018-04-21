@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "snap-city/Controller/MapVC.swift"
-            timestampString = "546013136.358976"
+            timestampString = "546030460.965701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "configureLocationServices()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "snap-city/Controller/MapVC.swift"
-            timestampString = "546013136.359489"
+            timestampString = "546030460.966486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "locationManager(_:didChangeAuthorization:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "snap-city/Controller/MapVC.swift"
-            timestampString = "546013136.359749"
+            timestampString = "546030460.9668911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "addDoubleTap()"
             landmarkType = "7">
          </BreakpointContent>

@@ -17,8 +17,11 @@ class DroppablePin: NSObject, MKAnnotation {
     init(coordinate : CLLocationCoordinate2D, identifier: String){
         self.coordinate = coordinate
         self.identifier = identifier
+       
         super.init()
+        
     }
+
     
     
 
