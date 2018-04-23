@@ -23,6 +23,8 @@ class PopUpVC: UIViewController, UIGestureRecognizerDelegate {
     var desc:String = ""
     var datePosted:String = ""
     
+    var isDataHidden:Bool = true
+    
     func initData(forImage image:UIImage , andData data : FlickrImage){
         self.image = image
         self.imageDescription = data
@@ -32,8 +34,10 @@ class PopUpVC: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         
         popImageView.image = image
+        imageDataView.isHidden = true
         
         addDoubleTap()
+        addSingleTap()
         
         getImageDescription { (true) in
             self.titleLbl.text = self.imageDescription.description
@@ -55,6 +59,29 @@ class PopUpVC: UIViewController, UIGestureRecognizerDelegate {
     
     @objc func dismissScreen(){
         dismiss(animated: true, completion: nil)
+    }
+    
+    func addSingleTap(){
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(showOrHideData))
+        
+        singleTap.numberOfTapsRequired = 1
+        singleTap.delegate = self
+        view.addGestureRecognizer(singleTap)
+    }
+    
+    @objc func showOrHideData(){
+        
+        if isDataHidden{
+            popImageView.alpha = 0.3
+        }
+        else{
+            popImageView.alpha = 1
+        }
+        
+        isDataHidden = !isDataHidden
+        
+        imageDataView.isHidden = isDataHidden
+      
     }
     
     
