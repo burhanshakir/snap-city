@@ -13,5 +13,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "closure #1 in PopUpVC.getImageDescription(handler:):PopUpVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "flickrImageDataUrl(forApiKey: api_key, andId: imageDescription.id)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

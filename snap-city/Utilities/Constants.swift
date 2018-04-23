@@ -16,3 +16,11 @@ func flickrUrl(forApiKey key: String, withAnnotation annotation : DroppablePin, 
 }
 
 
+func flickrImageDataUrl(forApiKey key: String, andId id: String) -> String{
+    
+    return "https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=\(api_key)&photo_id=\(id)&format=json&nojsoncallback=1"
+}
+
+
+
+

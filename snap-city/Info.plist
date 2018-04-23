@@ -45,5 +45,7 @@
 	<string>App requires your location to display images from Flickr</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>App requires your location to display images from Flickr</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>To store saved photos from the app</string>
 </dict>
 </plist>

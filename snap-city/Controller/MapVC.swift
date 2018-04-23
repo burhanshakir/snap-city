@@ -29,8 +29,8 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     var flowLayout = UICollectionViewFlowLayout()
     var collectionView:UICollectionView?
     
-    var imageURLArray = [String]()
-    var imageArray = [UIImage]()
+    var imagesArray = [FlickrImage]()
+    var downloadedImages = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,7 +129,6 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         progressLbl?.font = UIFont(name: "Avenir Next", size: 14)
         progressLbl?.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         progressLbl?.textAlignment = .center
-//        progressLbl?.text = "HEYY"
         collectionView?.addSubview(progressLbl!)
     }
     
@@ -171,8 +170,8 @@ extension MapVC : MKMapViewDelegate{
         removeProgressLbl()
         cancelSessions()
         
-        imageArray = []
-        imageURLArray = []
+        downloadedImages = []
+        imagesArray = []
         
         self.collectionView?.reloadData()
         
@@ -197,10 +196,10 @@ extension MapVC : MKMapViewDelegate{
                     if finished{
                         self.removeSpinner()
                         self.removeProgressLbl()
-                        
+
                         self.collectionView?.reloadData()
-                        
-                        
+
+
                     }
                 })
             }
@@ -221,6 +220,8 @@ extension MapVC : MKMapViewDelegate{
             
             guard let json = response.result.value as? Dictionary<String,AnyObject> else {return}
             
+            print(json)
+            
             let photoDict = json["photos"] as! Dictionary<String,AnyObject>
             
             let photoDictArray = photoDict["photo"] as! [Dictionary<String,AnyObject>]
@@ -229,7 +230,9 @@ extension MapVC : MKMapViewDelegate{
                 
                 let postURL = "https://farm\(photo["farm"]!).static.flickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_h_d.jpg"
                 
-                self.imageURLArray.append(postURL)
+                let flickrImage = FlickrImage(url: postURL, description: photo["title"] as! String, id: photo["id"]! as! String)
+                
+                self.imagesArray.append(flickrImage)
             }
             
             handler(true)
@@ -239,15 +242,15 @@ extension MapVC : MKMapViewDelegate{
     
     func retrieveImage(handler:@escaping (_ status : Bool) -> ()){
         
-        for url in imageURLArray{
-            Alamofire.request(url).responseImage(completionHandler: { (response) in
+        for image in imagesArray{
+            Alamofire.request(image.url).responseImage(completionHandler: { (response) in
                 
                 guard let image = response.result.value else {return}
-                self.imageArray.append(image)
+                self.downloadedImages.append(image)
                 
-                self.progressLbl?.text = "\(self.imageArray.count)/40 images downloaded"
+                self.progressLbl?.text = "\(self.downloadedImages.count)/40 images downloaded"
                 
-                if self.imageArray.count == self.imageURLArray.count{
+                if self.downloadedImages.count == self.imagesArray.count{
                     handler(true)
                 }
             })
@@ -293,14 +296,14 @@ extension MapVC : UICollectionViewDelegate, UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.imageArray.count
+        return self.downloadedImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell else {return UICollectionViewCell()}
         
-        let image = UIImageView(image: imageArray[indexPath.row])
+        let image = UIImageView(image: downloadedImages[indexPath.row])
         cell.addSubview(image)
         
         return cell
@@ -309,7 +312,7 @@ extension MapVC : UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         guard let popVC = storyboard?.instantiateViewController(withIdentifier: "PopUpVC") as? PopUpVC else { return }
-        popVC.initData(forImage: imageArray[indexPath.row])
+        popVC.initData(forImage: downloadedImages[indexPath.row], andData: imagesArray[indexPath.row])
         present(popVC, animated: true, completion: nil)
         
     }
@@ -322,7 +325,7 @@ extension MapVC: UIViewControllerPreviewingDelegate{
         guard let indexPath = collectionView?.indexPathForItem(at: location), let cell = collectionView?.cellForItem(at: indexPath) else { return nil}
         
         guard let popVC = storyboard?.instantiateViewController(withIdentifier: "PopUpVC") as? PopUpVC else { return nil }
-        popVC.initData(forImage: imageArray[indexPath.row])
+        popVC.initData(forImage: downloadedImages[indexPath.row], andData: imagesArray[indexPath.row])
         
         previewingContext.sourceRect = cell.contentView.frame
         return popVC
