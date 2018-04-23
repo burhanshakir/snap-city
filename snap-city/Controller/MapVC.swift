@@ -245,7 +245,11 @@ extension MapVC : MKMapViewDelegate{
         for image in imagesArray{
             Alamofire.request(image.url).responseImage(completionHandler: { (response) in
                 
-                guard let image = response.result.value else {return}
+                guard let image = response.result.value else
+                {
+                    return
+                    
+                }
                 self.downloadedImages.append(image)
                 
                 self.progressLbl?.text = "\(self.downloadedImages.count)/40 images downloaded"

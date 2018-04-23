@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 import Alamofire
 
 class PopUpVC: UIViewController, UIGestureRecognizerDelegate {
@@ -16,12 +17,17 @@ class PopUpVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var imageDataView: UIView!
+    @IBOutlet weak var navView: UIView!
+    @IBOutlet weak var shareView: UIView!
+    
     
     var image:UIImage!
     var imageDescription : FlickrImage!
     
     var desc:String = ""
     var datePosted:String = ""
+    var lat:String = ""
+    var long:String = ""
     
     var isDataHidden:Bool = true
     
@@ -35,26 +41,28 @@ class PopUpVC: UIViewController, UIGestureRecognizerDelegate {
         
         popImageView.image = image
         imageDataView.isHidden = true
+        navView.isHidden = true
+        shareView.isHidden = true
         
-        addDoubleTap()
+        addSwipe()
         addSingleTap()
         
         getImageDescription { (true) in
             self.titleLbl.text = self.imageDescription.description
             self.descLbl.text = self.desc
-            self.dateLbl.text = "Posted: \(self.datePosted)"
+            self.dateLbl.text = "Posted: \(getDate(dt: self.datePosted))"
             
         }
 
         // Do any additional setup after loading the view.
     }
     
-    func addDoubleTap(){
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(dismissScreen))
+    func addSwipe(){
         
-        doubleTap.numberOfTapsRequired = 2
-        doubleTap.delegate = self
-        view.addGestureRecognizer(doubleTap)
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissScreen))
+        swipe.direction = .down
+        
+        view.addGestureRecognizer(swipe)
     }
     
     @objc func dismissScreen(){
@@ -81,7 +89,23 @@ class PopUpVC: UIViewController, UIGestureRecognizerDelegate {
         isDataHidden = !isDataHidden
         
         imageDataView.isHidden = isDataHidden
+        navView.isHidden = isDataHidden
+        shareView.isHidden = isDataHidden
       
+    }
+    
+    
+    @IBAction func navBtnPressed(_ sender: Any) {
+        
+        let location:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: Double((lat as NSString).doubleValue), longitude: Double((long as NSString).doubleValue))
+
+        
+        let coordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
+        mapItem.name = "Destination/Target Address or Name"
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
+        
+        
     }
     
     
@@ -112,6 +136,12 @@ class PopUpVC: UIViewController, UIGestureRecognizerDelegate {
             
             let datesDict = json!["dates"] as! Dictionary<String,AnyObject>
             self.datePosted = (datesDict["posted"] as? String)!
+            
+            let latDict = json!["location"] as! Dictionary<String,AnyObject>
+            self.lat = (latDict["latitude"] as? String)!
+            
+            let longDict = json!["location"] as! Dictionary<String,AnyObject>
+            self.long = (longDict["longitude"] as? String)!
             
             handler(true)
             

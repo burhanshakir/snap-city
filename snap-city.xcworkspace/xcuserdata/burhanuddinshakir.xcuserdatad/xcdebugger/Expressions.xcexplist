@@ -3,6 +3,17 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "closure #1 in MapVC.retrieveImage(handler:):MapVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "imagesArray">
+            </PersistentString>
+            <PersistentString
+               value = "image.url">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MapVC.configureLocationServices():MapVC.swift">
          <PersistentStrings>
             <PersistentString

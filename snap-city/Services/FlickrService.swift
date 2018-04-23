@@ -53,9 +53,9 @@ class FlickrService{
                 guard let image = response.result.value else {return}
                 self.imageArray.append(image)
                 
-//                self.progressLbl?.text = "\(self.imageArray.count)/40 images downloaded"
+                //                self.progressLbl?.text = "\(self.imageArray.count)/40 images downloaded"
                 
-//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIF_IMAGE_LOADED), object: nil)
+                //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIF_IMAGE_LOADED), object: nil)
                 
                 if self.imageArray.count == self.imageURLArray.count{
                     handler(true)

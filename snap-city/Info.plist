@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>SnapCIty</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -20,6 +22,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>App requires your location to display images from Flickr</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>App requires your location to display images from Flickr</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App requires your location to display images from Flickr</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>To store saved photos from the app</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -39,13 +49,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>App requires your location to display images from Flickr</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>App requires your location to display images from Flickr</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>App requires your location to display images from Flickr</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>To store saved photos from the app</string>
 </dict>
 </plist>

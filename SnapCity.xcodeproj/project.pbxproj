@@ -13,12 +13,12 @@
 		DF2C1F92208BC63200C906FA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2C1F91208BC63200C906FA /* Constants.swift */; };
 		DF2C1F94208C0C6600C906FA /* PopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2C1F93208C0C6600C906FA /* PopUpVC.swift */; };
 		DF2C1F9E208C27DD00C906FA /* FlickrImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2C1F9D208C27DD00C906FA /* FlickrImage.swift */; };
-		DF2C1FA1208D4EDF00C906FA /* FlickrService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2C1FA0208D4EDF00C906FA /* FlickrService.swift */; };
 		DF9C3E832088F65B0001C3D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9C3E822088F65B0001C3D3 /* AppDelegate.swift */; };
 		DF9C3E852088F65B0001C3D3 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9C3E842088F65B0001C3D3 /* MapVC.swift */; };
 		DF9C3E882088F65B0001C3D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9C3E862088F65B0001C3D3 /* Main.storyboard */; };
 		DF9C3E8A2088F65B0001C3D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF9C3E892088F65B0001C3D3 /* Assets.xcassets */; };
 		DF9C3E8D2088F65B0001C3D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9C3E8B2088F65B0001C3D3 /* LaunchScreen.storyboard */; };
+		DFF33186208E2BA80034D871 /* FlickrService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF33185208E2BA80034D871 /* FlickrService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,6 @@
 		DF2C1F91208BC63200C906FA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DF2C1F93208C0C6600C906FA /* PopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpVC.swift; sourceTree = "<group>"; };
 		DF2C1F9D208C27DD00C906FA /* FlickrImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImage.swift; sourceTree = "<group>"; };
-		DF2C1FA0208D4EDF00C906FA /* FlickrService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrService.swift; sourceTree = "<group>"; };
 		DF9C3E7F2088F65B0001C3D3 /* snap-city.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "snap-city.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF9C3E822088F65B0001C3D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF9C3E842088F65B0001C3D3 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -37,6 +36,7 @@
 		DF9C3E892088F65B0001C3D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF9C3E8C2088F65B0001C3D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF9C3E8E2088F65B0001C3D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFF33185208E2BA80034D871 /* FlickrService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrService.swift; sourceTree = "<group>"; };
 		EB2E772723C2AB2D09505F01 /* Pods-snap-city.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snap-city.debug.xcconfig"; path = "Pods/Target Support Files/Pods-snap-city/Pods-snap-city.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,14 +77,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		DF2C1F9F208D4EBF00C906FA /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				DF2C1FA0208D4EDF00C906FA /* FlickrService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		DF9C3E762088F65B0001C3D3 = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +98,7 @@
 		DF9C3E812088F65B0001C3D3 /* snap-city */ = {
 			isa = PBXGroup;
 			children = (
-				DF2C1F9F208D4EBF00C906FA /* Services */,
+				DFF33184208E2B900034D871 /* Services */,
 				DF2C1F9C208C279900C906FA /* Model */,
 				DF9C3E972088F7110001C3D3 /* Utilities */,
 				DF9C3E962088F7050001C3D3 /* Extensions */,
@@ -154,6 +146,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		DFF33184208E2B900034D871 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DFF33185208E2BA80034D871 /* FlickrService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -184,7 +184,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "COMP47390-41550";
 				TargetAttributes = {
 					DF9C3E7E2088F65B0001C3D3 = {
@@ -193,7 +193,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DF9C3E7A2088F65B0001C3D3 /* Build configuration list for PBXProject "snap-city" */;
+			buildConfigurationList = DF9C3E7A2088F65B0001C3D3 /* Build configuration list for PBXProject "SnapCity" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -279,7 +279,7 @@
 			files = (
 				DF2C1F9E208C27DD00C906FA /* FlickrImage.swift in Sources */,
 				DF2C1F92208BC63200C906FA /* Constants.swift in Sources */,
-				DF2C1FA1208D4EDF00C906FA /* FlickrService.swift in Sources */,
+				DFF33186208E2BA80034D871 /* FlickrService.swift in Sources */,
 				DF2C1F90208BC07D00C906FA /* PhotoCell.swift in Sources */,
 				DF9C3E852088F65B0001C3D3 /* MapVC.swift in Sources */,
 				DF2C1F94208C0C6600C906FA /* PopUpVC.swift in Sources */,
@@ -324,6 +324,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -331,6 +332,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -381,6 +383,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -388,6 +391,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -430,7 +434,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ie.ucd.comp47390-41550.snap-city";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -447,14 +451,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ie.ucd.comp47390-41550.snap-city";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DF9C3E7A2088F65B0001C3D3 /* Build configuration list for PBXProject "snap-city" */ = {
+		DF9C3E7A2088F65B0001C3D3 /* Build configuration list for PBXProject "SnapCity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DF9C3E8F2088F65B0001C3D3 /* Debug */,

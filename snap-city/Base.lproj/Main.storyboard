@@ -28,7 +28,7 @@
                                         <rect key="frame" x="15" y="25" width="291" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="OpH-wF-6oS"/>
-                                            <constraint firstAttribute="width" constant="291" id="ar7-su-VOB"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="291" id="ar7-su-VOB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -102,8 +102,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Idk-BF-oxd">
                                 <rect key="frame" x="60" y="527" width="200" height="25"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Double-tap to dismiss" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTL-fe-Zvt">
-                                        <rect key="frame" x="14" y="1" width="172.5" height="23.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe down to dismiss" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTL-fe-Zvt">
+                                        <rect key="frame" x="10.5" y="1" width="180" height="23.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -132,7 +132,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Dpk-3Y-MKZ"/>
                                     <constraint firstItem="2hG-nF-sD9" firstAttribute="centerX" secondItem="ovs-uy-pMf" secondAttribute="centerX" id="GJJ-GG-M3p"/>
@@ -161,9 +161,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRF-C2-6fv">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRF-C2-6fv">
                                         <rect key="frame" x="8" y="74" width="224" height="0.0"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -183,17 +183,42 @@
                                     <constraint firstAttribute="height" constant="150" id="xhH-Mg-BiV"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rhb-8Q-wHH">
+                                <rect key="frame" x="269" y="63" width="35" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Itc-Px-Mdv">
+                                        <rect key="frame" x="2" y="2" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="4AU-c2-Pyo"/>
+                                            <constraint firstAttribute="width" constant="30" id="gwM-QA-HFn"/>
+                                        </constraints>
+                                        <state key="normal" image="navigation"/>
+                                        <connections>
+                                            <action selector="navBtnPressed:" destination="Gqx-f9-gz0" eventType="touchUpInside" id="R6J-7N-Pth"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Itc-Px-Mdv" firstAttribute="centerY" secondItem="Rhb-8Q-wHH" secondAttribute="centerY" id="7mc-Ue-0HE"/>
+                                    <constraint firstItem="Itc-Px-Mdv" firstAttribute="centerX" secondItem="Rhb-8Q-wHH" secondAttribute="centerX" id="IIr-xP-odP"/>
+                                    <constraint firstAttribute="width" constant="35" id="dbY-k0-0Qe"/>
+                                    <constraint firstAttribute="height" constant="35" id="wGa-0O-NVh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kQL-Je-RNT" firstAttribute="trailing" secondItem="ovs-uy-pMf" secondAttribute="trailing" constant="16" id="2EP-gL-Z90"/>
                             <constraint firstItem="j04-QH-C46" firstAttribute="bottom" secondItem="kQL-Je-RNT" secondAttribute="bottom" id="5ne-nA-tZN"/>
+                            <constraint firstItem="kQL-Je-RNT" firstAttribute="trailing" secondItem="Rhb-8Q-wHH" secondAttribute="trailing" constant="16" id="B1e-Z5-7Eg"/>
                             <constraint firstItem="ZZE-2d-l1b" firstAttribute="leading" secondItem="kQL-Je-RNT" secondAttribute="leading" id="Blq-So-Itt"/>
                             <constraint firstItem="j04-QH-C46" firstAttribute="leading" secondItem="kQL-Je-RNT" secondAttribute="leading" id="L3Z-Cn-h5w"/>
                             <constraint firstItem="kQL-Je-RNT" firstAttribute="bottom" secondItem="Idk-BF-oxd" secondAttribute="bottom" constant="16" id="NJR-Rg-mca"/>
                             <constraint firstItem="j04-QH-C46" firstAttribute="top" secondItem="rVB-vu-CS9" secondAttribute="top" id="YVo-3S-jqb"/>
                             <constraint firstItem="j04-QH-C46" firstAttribute="trailing" secondItem="kQL-Je-RNT" secondAttribute="trailing" id="aPg-s7-r5Y"/>
                             <constraint firstItem="ovs-uy-pMf" firstAttribute="top" secondItem="kQL-Je-RNT" secondAttribute="top" id="cQX-sJ-61O"/>
+                            <constraint firstItem="Rhb-8Q-wHH" firstAttribute="top" secondItem="ovs-uy-pMf" secondAttribute="bottom" constant="8" id="cUN-J4-hoZ"/>
                             <constraint firstItem="ZZE-2d-l1b" firstAttribute="top" secondItem="kQL-Je-RNT" secondAttribute="top" id="kmj-jt-J5q"/>
                             <constraint firstItem="Idk-BF-oxd" firstAttribute="centerX" secondItem="rVB-vu-CS9" secondAttribute="centerX" id="lJ0-Yx-UXr"/>
                         </constraints>
@@ -202,8 +227,10 @@
                     <connections>
                         <outlet property="dateLbl" destination="XRF-C2-6fv" id="SPe-sU-kux"/>
                         <outlet property="descLbl" destination="z1o-TC-pf5" id="CTc-xW-F1l"/>
-                        <outlet property="imageDataView" destination="ZZE-2d-l1b" id="MXE-AN-yFp"/>
+                        <outlet property="imageDataView" destination="ZZE-2d-l1b" id="mvX-Wv-GKF"/>
+                        <outlet property="navView" destination="Rhb-8Q-wHH" id="9zV-2v-fuN"/>
                         <outlet property="popImageView" destination="j04-QH-C46" id="QU9-3k-mk9"/>
+                        <outlet property="shareView" destination="ovs-uy-pMf" id="7o0-Nc-5Ch"/>
                         <outlet property="titleLbl" destination="nYk-as-4Zv" id="79W-zJ-LLo"/>
                     </connections>
                 </viewController>
@@ -214,6 +241,7 @@
     </scenes>
     <resources>
         <image name="locationButton" width="67" height="67"/>
+        <image name="navigation" width="50" height="50"/>
         <image name="share" width="50" height="50"/>
     </resources>
 </document>
